@@ -34,8 +34,11 @@
         playerMove = window.prompt(
           "Welcome to Rock, Paper, Scissors, Please choose your move."
         );
+        // Displays prompt for player to make move 
+
         var playerWins = 0;
         var computerWins = 0;
+
         for (i = 0; i < 4; i++) {
           if (playRound(playerMove, computerPlay()) == true) {
             playerWins = ++playerWins;
