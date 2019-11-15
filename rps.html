@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    Page Title
+  </head>
+  <body>
+    <script>
+      var values = ["Rock", "Paper", "Scissors"];
+      function computerPlay() {
+        return values[Math.floor(Math.random() * values.length)];
+      }
+      function capitalize(input) {
+        return input.slice(0, 1).toUpperCase() + input.slice(1).toLowerCase();
+      }
+      function playRound(playerSelection, computerSelection) {
+        if (
+          (playerSelection.toLowerCase() == "scissors" &&
+            computerSelection.toLowerCase() == "paper") ||
+          (playerSelection.toLowerCase() == "paper" &&
+            computerSelection.toLowerCase() == "rock") ||
+          (playerSelection.toLowerCase() == "rock" &&
+            computerSelection.toLowerCase() == "scissors")
+        ) {
+          return true;
+        } else if (
+          playerSelection.toLowerCase() == computerSelection.toLowerCase()
+        ) {
+          return 2;
+        } else {
+          return false;
+        }
+      }
+      function game() {
+        playerMove = window.prompt(
+          "Welcome to Rock, Paper, Scissors, Please choose your move."
+        );
+        var playerWins = 0;
+        var computerWins = 0;
+        for (i = 0; i < 4; i++) {
+          if (playRound(playerMove, computerPlay()) == true) {
+            playerWins = ++playerWins;
+            playerMove = window.prompt("You win! Please make your next move.");
+          } else if (playRound(playerMove, computerPlay()) == 2) {
+            playerMove = window.prompt("It's a tie! Please make your next move.");
+          } else {
+            computerWins = ++computerWins;
+            playerMove = window.prompt("You lose! Please make your next move.")
+          }
+        }
+
+        if (playerWins < computerWins) {
+          alert("YOU LOSE!");
+        } else {
+          alert("YOU WIN!");
+        }
+      }
+      console.log(game());
+      console.log(playRound("rock", computerPlay()));
+    </script>
+  </body>
+</html>
